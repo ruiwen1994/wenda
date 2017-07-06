@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+
+    $!{value1}
+    $!{value2} ## 如果不存在强制为空
+    ${value3}
+
+    colors: $!{Colors}
+    #foreach($co in $Colors)
+    This is Color $!{foreach.index}: $co, $!{foreach.count}
+    #end
+
+    #foreach($kv in $map.entrySet())
+    Number of i is $kv.key; Result is $kv.value.
+    #end
+
+    User: $!{user.name}
+    Description:  $!{user.getDescription()}
+    Description2: $!{user.Description}
+
+    #set($title = "Ryan")
+    Title: $!{title}
+
+    Parse: #parse("header.html")
+    Include: #include("header.html")
+
+    #macro ( Render_Color, $index, $color)
+    Color Render Macro $index
+    #end
+
+    #foreach($co in $Colors)
+    #Render_Color($foreach.index, $co)
+    #end
+
+    #set($hello = "hello")
+    #set($helloworld1 = "$!{hello} world")
+
+    $hello
+    $helloworld1
+
+    #set($helloworld1 = '$!{hello} world')
+    $helloworld1
+
+</pre>
+</body>
+</html>
