@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class SettingController {
     @Autowired
     WendaService wendaService;
+
     @RequestMapping(path = {"/setting"}, method = {RequestMethod.GET})
     @ResponseBody
     public String index(HttpSession httpSession){

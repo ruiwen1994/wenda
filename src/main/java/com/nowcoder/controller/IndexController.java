@@ -21,10 +21,11 @@ import java.util.*;
  */
 @Controller
 public class IndexController {
+    //其实是试验页控制层
+
     private static final Logger logger = LoggerFactory.getLogger(com.nowcoder.aspect.LogAspect.class);
 
-
-    @RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/home"}, method = {RequestMethod.GET})
     @ResponseBody
     public String index(HttpSession httpSession){
         logger.info("VISIT HOME");
@@ -42,11 +43,6 @@ public class IndexController {
                           @RequestParam("type") int type,
                           @RequestParam(value = "key",defaultValue = "key",required = false) String key){
         return String.format("Profile Page of %s / %d, t:%d k:%s", groupID, userID, type, key);
-    }
-
-    @RequestMapping(path = {"/login","login2"}, method = {RequestMethod.GET})
-    public Object template2(Model model){
-        return "login";
     }
 
     @RequestMapping(path = {"/vm" }, method = {RequestMethod.GET})
