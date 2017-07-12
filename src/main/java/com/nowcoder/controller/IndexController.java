@@ -84,8 +84,8 @@ public class IndexController {
         sb.append(request.getPathInfo()+"<br>");
         sb.append(request.getRequestURI()+"<br>");
 
-        response.addHeader("nowcoderID","nothing");
-        response.addCookie(new Cookie ("nowcodercookieID","nothing"));
+        response.addHeader("homemadeHeaderID","nosense");
+        response.addCookie(new Cookie (" nowcodercookieID","nonsense"));
         return sb.toString();
     }
 

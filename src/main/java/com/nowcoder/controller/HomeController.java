@@ -1,5 +1,6 @@
 package com.nowcoder.controller;
 
+import com.nowcoder.model.HostHolder;
 import com.nowcoder.model.Question;
 import com.nowcoder.model.ViewObject;
 import com.nowcoder.service.QuestionService;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
-    private static final Logger logger = LoggerFactory.getLogger(com.nowcoder.aspect.LogAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
     QuestionService questionService;
@@ -43,15 +44,15 @@ public class HomeController {
     }
 
 
-    @RequestMapping(path = {"/user/{userId}"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/user/{userId}"}, method = {RequestMethod.GET,RequestMethod.POST})
     public String userIndex(Model model, @PathVariable("userId") int userId){
         model.addAttribute("vos",getQuestions(userId, 0 ,10));
         return "index";
     }
 
-    @RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET,RequestMethod.POST})
     public String index(Model model){
-        model.addAttribute("vos",getQuestions(0,1, 10));
+        model.addAttribute("vos",getQuestions(0,0, 10));
         return "index";
     }
 
