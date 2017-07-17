@@ -12,6 +12,7 @@ public class Comment {
     private Date createdDate;
     private int entityId;
     private int entityType;
+    private int status;
 
     public int getId() {
         return id;
@@ -59,5 +60,13 @@ public class Comment {
 
     public void setEntityType(int entityType) {
         this.entityType = entityType;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

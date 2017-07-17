@@ -30,6 +30,8 @@ public class HomeController {
     QuestionService questionService;
     @Autowired
     UserService userService;
+    @Autowired
+    HostHolder hostHolder;
 
     private List<ViewObject> getQuestions(int userID, int offset, int limit) {
         List<Question> questionList = questionService.getLatestQuestions(userID, offset, limit);
@@ -53,6 +55,7 @@ public class HomeController {
     @RequestMapping(path = {"/","/index"}, method = {RequestMethod.GET,RequestMethod.POST})
     public String index(Model model){
         model.addAttribute("vos",getQuestions(0,0, 10));
+        hostHolder.getUser();
         return "index";
     }
 

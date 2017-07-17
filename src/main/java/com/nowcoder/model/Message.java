@@ -12,6 +12,7 @@ public class Message {
     private String content;
     private String coversationId;
     private Date createdDate;
+    private int hasRead;
 
     public int getId() {
         return id;
@@ -46,11 +47,11 @@ public class Message {
     }
 
     public String getCoversationId() {
-        return coversationId;
-    }
-
-    public void setCoversationId(String coversationId) {
-        this.coversationId = coversationId;
+        if (fromId < toId){
+            return String.format("%d_%d",fromId, toId);
+        }else {
+            return String.format("%d_%d",toId, fromId);
+        }
     }
 
     public Date getCreatedDate() {
@@ -59,5 +60,13 @@ public class Message {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public int getHasRead() {
+        return hasRead;
+    }
+
+    public void setHasRead(int hasRead) {
+        this.hasRead = hasRead;
     }
 }

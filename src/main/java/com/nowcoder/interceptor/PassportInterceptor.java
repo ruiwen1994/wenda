@@ -46,14 +46,15 @@ public class PassportInterceptor implements HandlerInterceptor{
 
         if (ticket != null) {
             LoginTicket loginTicket = loginTicketDAO.selectByTicket(ticket);
+            //如果没有找到对应的token标识或者token找到已经失效或者token标识表面该用户已经下线了
             if (loginTicket == null || loginTicket.getExpired().before(new Date()) || loginTicket.getStatus() != 0) {
-                return true;
+                return true;//返回
             }
 
             User user = userDAO.selectById(loginTicket.getUserId());
             hostHolder.setUser(user);
         }
-        return true;
+        return true;//如果是false，就全部结束
     }
 
     @Override
